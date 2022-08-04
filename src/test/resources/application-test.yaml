@@ -1,0 +1,39 @@
+webclient:
+  buffer-size: ${WEBCLIENT_BUFFER_SIZE:10485760}
+
+keycloak:
+ issuer-uri: ${KEYCLOAK_URL_AUTH:https://keycloak-tsplatform.techsophy.com}/auth/realms/
+
+gateway:
+ uri: ${GATEWAY_URI:https://api-gateway.techsophy.com/api}
+
+database:
+ url: ${TP_MODELER_APP_MONGO_URI:mongodb://localhost:27017}
+ name: techsophy-platform
+
+dbstorage: ${DB_STORAGE:false}
+
+logo:
+ url: ${LOGO_URL:/opt/qrcode/logo.png}
+ display: ${LOGO_DISPLAY:true}
+
+paymentgateway:
+ razorpay:
+  url: ${RAZORPAY_URL:https://api.razorpay.com/v1}
+  keyid: ${RAZORPAY_KEY_ID:rzp_test_gCkKFfXr3QWkxo}
+  keysecret: ${RAZORPAY_KEY_SECRET:r3Sj6j9JQkgarcJr4vmDu7JH}
+ paypal:
+ payby:
+
+springdoc:
+ api-docs:
+  path: /payment-gateway/v3/api-docs
+
+USER:
+  REGISTRATION:
+    FAILURE:
+      EMAIL:
+        TO: xyz.x@techsophy.com
+        SUBJECT: failure
+default:
+ pagelimit: 5
