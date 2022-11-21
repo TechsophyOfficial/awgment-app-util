@@ -2,6 +2,7 @@ package com.techsophy.tsf.util.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.techsophy.tsf.util.utils.TokenUtils;
 import com.techsophy.tsf.util.utils.WebClientWrapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,9 @@ class JWTRoleConverterTest
     @Mock
     WebClientWrapper webClientWrapper;
 
+    @Mock
+    TokenUtils tokenUtils;
+
     @InjectMocks
     JWTRoleConverter jwtRoleConverter;
 
@@ -49,6 +53,7 @@ class JWTRoleConverterTest
                 .thenReturn("abc");
         when(mockObjectMapper.readValue("abc",Map.class)).thenReturn(map);
         when(mockObjectMapper.convertValue(any(),eq(List.class))).thenReturn(list);
+        when(tokenUtils.getIssuerFromToken(anyString())).thenReturn("techsophy-platform");
         Collection grantedAuthority =  jwtRoleConverter.convert(jwt);
         Assertions.assertNotNull(grantedAuthority);
     }
