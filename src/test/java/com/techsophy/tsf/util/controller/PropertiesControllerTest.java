@@ -103,7 +103,7 @@ class PropertiesControllerTest
         propertiesMap.setKey(TEST_KEY);
         propertiesMap.setValue(TEST_VALUE);
         PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(
-                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_CREATED_BY_NAME,TEST_UPDATED_BY_ID_VALUE,TEST_UPDATED_ON_INSTANT,TEST_UPDATED_BY_NAME);
+                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_UPDATED_ON_INSTANT);
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
         Mockito.when(mockPropertiesServiceImpl.getPropertiesByProjectName(TEST_PROJECT_NAME, TEST_FILTER)).thenReturn(List.of(propertiesMap));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL+ VERSION_V1+PROPERTIES_BY_PROJECT_NAME).param(PROJECT_NAME,TEST_PROPERTIES_NAME)
@@ -125,7 +125,7 @@ class PropertiesControllerTest
         ObjectMapper objectMapperTest=new ObjectMapper();
         PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(TEST_ID
                 ,TEST_PROPERTIES_NAME,List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE
-                ,null,TEST_CREATED_BY_NAME,TEST_UPDATED_BY_NAME,null,TEST_UPDATED_BY_NAME);
+                ,null,null);
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
         Mockito.when(mockPropertiesServiceImpl.getAllProperties()).thenReturn(List.of(propertiesResponseSchema));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL+ VERSION_V1+PROPERTIES_URL)
