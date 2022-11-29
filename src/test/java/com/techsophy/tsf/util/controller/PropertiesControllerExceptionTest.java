@@ -103,7 +103,7 @@ class PropertiesControllerExceptionTest
         propertiesMap.setKey(TEST_KEY);
         propertiesMap.setValue(TEST_VALUE);
         PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(
-                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_CREATED_BY_NAME,TEST_UPDATED_BY_ID_VALUE,TEST_UPDATED_ON_INSTANT,TEST_UPDATED_BY_NAME);
+                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_UPDATED_ON_INSTANT);
         Mockito.when(mockTokenUtils.getIssuerFromToken(PropertiesConstants.TOKEN)).thenReturn(TENANT);
         Mockito.when(mockPropertiesController.getPropertiesByProjectAndFilter(TEST_PROJECT_NAME, TEST_FILTER)).thenThrow(new ProjectNotFoundException(PROJECT_NOT_FOUND_WITH_GIVEN_NAME,PROJECT_NOT_FOUND_WITH_GIVEN_NAME));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(PropertiesConstants.BASE_URL+ PropertiesConstants.VERSION_V1+PROPERTIES_BY_PROJECT_NAME).param(PROJECT_NAME,TEST_PROPERTIES_NAME)
@@ -190,7 +190,7 @@ class PropertiesControllerExceptionTest
         propertiesMap.setKey(TEST_KEY);
         propertiesMap.setValue(TEST_VALUE);
         PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(
-                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_CREATED_BY_NAME,TEST_UPDATED_BY_ID_VALUE,TEST_UPDATED_ON_INSTANT,TEST_UPDATED_BY_NAME);
+                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_UPDATED_ON_INSTANT);
         Mockito.when(mockTokenUtils.getIssuerFromToken(PropertiesConstants.TOKEN)).thenReturn(TENANT);
         Mockito.when(mockPropertiesController.getPropertiesByProjectAndFilter(TEST_PROJECT_NAME, TEST_FILTER)).thenThrow(new UploadedUserNotFoundException(ENTITY_NOT_FOUND_EXCEPTION,ENTITY_NOT_FOUND_EXCEPTION));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(PropertiesConstants.BASE_URL+ PropertiesConstants.VERSION_V1+PROPERTIES_BY_PROJECT_NAME).param(PROJECT_NAME,TEST_PROPERTIES_NAME)
@@ -211,7 +211,7 @@ class PropertiesControllerExceptionTest
         propertiesMap.setKey(TEST_KEY);
         propertiesMap.setValue(TEST_VALUE);
         PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(
-                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_CREATED_BY_NAME,TEST_UPDATED_BY_ID_VALUE,TEST_UPDATED_ON_INSTANT,TEST_UPDATED_BY_NAME);
+                TEST_ID,TEST_PROJECT_NAME, List.of(propertiesMap),TEST_CREATED_BY_ID_VALUE,TEST_CREATED_ON_INSTANT,TEST_UPDATED_ON_INSTANT);
         Mockito.when(mockTokenUtils.getIssuerFromToken(PropertiesConstants.TOKEN)).thenReturn(TENANT);
         Mockito.when(mockPropertiesController.getPropertiesByProjectAndFilter(TEST_PROJECT_NAME, TEST_FILTER)).thenThrow(new FileNameNotPresentException(PROJECT_NOT_FOUND_WITH_GIVEN_NAME,PROJECT_NOT_FOUND_WITH_GIVEN_NAME));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(PropertiesConstants.BASE_URL+ PropertiesConstants.VERSION_V1+PROPERTIES_BY_PROJECT_NAME).param(PROJECT_NAME,TEST_PROPERTIES_NAME)

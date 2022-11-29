@@ -111,9 +111,7 @@ public class FileUploadServiceImpl implements FileUploadService
                         BigInteger recordId=idGenerator.nextId();
                         fileUploadDefinition = FileUploadDefinition.builder().id(recordId).userData(rowDetails).documentId(documentId).status(CREATED).createdOn(Instant.now())
                                 .createdById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString())))
-                                .createdByName(loggedInUser.get(USER_DEFINITION_FIRST_NAME) + SPACE + loggedInUser.get(USER_DEFINTION_LAST_NAME))
-                                .updatedOn(Instant.now()).updatedById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString())))
-                                .updatedByName(loggedInUser.get(USER_DEFINITION_FIRST_NAME)+SPACE+loggedInUser.get(USER_DEFINTION_LAST_NAME)).build();
+                                .updatedOn(Instant.now()).updatedById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString()))).build();
                     }
                     else
                     {
@@ -123,9 +121,7 @@ public class FileUploadServiceImpl implements FileUploadService
 
                         fileUploadDefinition = FileUploadDefinition.builder().id(existingFileDefinition.getId()).userData(rowDetails).documentId(existingFileDefinition.getDocumentId()).status(UPDATED).createdOn(existingFileDefinition.getCreatedOn())
                                 .createdById(existingFileDefinition.getCreatedById())
-                                .createdByName(existingFileDefinition.getCreatedByName())
-                                .updatedOn(Instant.now()).updatedById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString())))
-                                .updatedByName(loggedInUser.get(USER_DEFINITION_FIRST_NAME)+SPACE+loggedInUser.get(USER_DEFINTION_LAST_NAME)).build();
+                                .updatedOn(Instant.now()).updatedById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString()))).build();
                     }
                     FileData fileData = this.objectMapper.convertValue(fileUploadDefinition, FileData.class);
                     FileUploadDefinition fileUploadDefinition1 = this.objectMapper.convertValue(fileData, FileUploadDefinition.class);
@@ -162,7 +158,6 @@ public class FileUploadServiceImpl implements FileUploadService
         existingFileDefinition.setStatus(fileUploadSchema.getStatus());
         existingFileDefinition.setUpdatedOn(Instant.now());
         existingFileDefinition.setUpdatedById(BigInteger.valueOf(Long.parseLong(loggedInUser.get(ID).toString())));
-        existingFileDefinition.setUpdatedByName(loggedInUser.get(USER_DEFINITION_FIRST_NAME)+SPACE+loggedInUser.get(USER_DEFINTION_LAST_NAME));
         this.fileUploadDefinitionRepository.save(existingFileDefinition);
         return new FileUploadResponse(String.valueOf(existingFileDefinition.getDocumentId()));
     }
