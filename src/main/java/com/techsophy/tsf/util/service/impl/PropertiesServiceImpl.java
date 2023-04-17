@@ -57,7 +57,6 @@ public class PropertiesServiceImpl implements PropertiesService
             propertiesDefinition.setProperties(propertiesSchema.getProperties());
             propertiesDefinition.setCreatedById(loggedInUserId);
             propertiesDefinition.setCreatedOn(Instant.now());
-            propertiesDefinition.setCreatedByName(loggedInUserDetails.get(FIRST_NAME)+SPACE+loggedInUserDetails.get(LAST_NAME));
         }
         else
         {
@@ -70,11 +69,9 @@ public class PropertiesServiceImpl implements PropertiesService
             propertiesDefinition.setProperties(propertiesList);
             propertiesDefinition.setCreatedById(existingPropertiesDefinition.getCreatedById());
             propertiesDefinition.setCreatedOn(existingPropertiesDefinition.getCreatedOn());
-            propertiesDefinition.setCreatedByName(existingPropertiesDefinition.getCreatedByName());
         }
         propertiesDefinition.setUpdatedById(loggedInUserId);
         propertiesDefinition.setUpdatedOn(Instant.now());
-        propertiesDefinition.setUpdatedByName(loggedInUserDetails.get(FIRST_NAME)+SPACE+loggedInUserDetails.get(LAST_NAME));
         this.propertiesDefinitionRepository.save(propertiesDefinition);
         return new PropertiesResponse(propertiesDefinition.getProjectName());
     }
@@ -97,7 +94,7 @@ public class PropertiesServiceImpl implements PropertiesService
         for(PropertiesDefinition definition : propertiesDefinition)
         {
             PropertiesResponseSchema propertiesResponseSchema=new PropertiesResponseSchema(String.valueOf(definition.getId()),definition.getProjectName(),definition.getProperties(),String.valueOf(definition.getCreatedById())
-            ,definition.getCreatedOn(),definition.getCreatedByName(),definition.getCreatedByName(),definition.getUpdatedOn(),definition.getUpdatedByName());
+            ,definition.getCreatedOn(),definition.getUpdatedOn());
         propertiesResponseSchemaList.add(propertiesResponseSchema);
         }
         return propertiesResponseSchemaList;

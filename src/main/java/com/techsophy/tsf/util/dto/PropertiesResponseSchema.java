@@ -18,9 +18,6 @@ public class PropertiesResponseSchema
     String createdById;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN, timezone = TIME_ZONE)
     Instant createdOn;
-    String createdByName;
-    String updatedById;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN, timezone = TIME_ZONE)
     Instant updatedOn;
-    String updatedByName;
 }
