@@ -27,7 +27,9 @@ public class FileUploadConstants
     public static final String TP_FILE_UPLOAD ="tp_file_upload";
     public static final String USER_ID_NOT_NULL="userId cannot be null";
     public static final String FILE_UPLOAD_URL ="/file-upload";
-    public static final String FILE_UPLOAD_SUCCESS ="FILE.UPLOAD.SUCCESS";
+
+  public static final String FILE_UPLOAD_DATA ="/file/upload";
+  public static final String FILE_UPLOAD_SUCCESS ="FILE.UPLOAD.SUCCESS";
     public static final String FILE="file";
 
 
@@ -69,4 +71,5 @@ public class FileUploadConstants
     public static final String LOGO_FILE_NOT_FOUND = "Logo file not found in logo url";
 
 
+  public static final String RECORDS = "/records";
 }
