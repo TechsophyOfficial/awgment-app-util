@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import javax.servlet.Filter;
@@ -24,12 +25,20 @@ public class CustomFilter implements Filter
 {
     private TokenUtils tokenUtils;
 
+    @Value("${keycloak.realm}")
+    private String defaultRealm;
+
     @SneakyThrows
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain)
     {
         HttpServletRequest httpRequest=(HttpServletRequest) request;
-        String tenant= tokenUtils.getIssuerFromToken(httpRequest.getHeader(AUTHORIZATION));
+        String tenant = null;
+        if(((HttpServletRequest) request).getRequestURI().contains("shrt") && !((HttpServletRequest) request).getRequestURI().contains("shorten")){
+            tenant = defaultRealm;
+        }else {
+            tenant = tokenUtils.getIssuerFromToken(httpRequest.getHeader(AUTHORIZATION));
+        }
         if(StringUtils.isNotEmpty(tenant))
         {
             TenantContext.setTenantId(tenant);

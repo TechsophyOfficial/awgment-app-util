@@ -21,7 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        http.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
+        http.authorizeRequests(authorize -> authorize
+                        .antMatchers("/shrt/**").permitAll()
+                        .antMatchers("/shrt/shorten").authenticated()
+                        .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2->oauth2.authenticationManagerResolver(this.authenticationManagerResolver));
     }
 }
