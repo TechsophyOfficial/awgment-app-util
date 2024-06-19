@@ -3,6 +3,7 @@ webclient:
 
 keycloak:
  issuer-uri: ${KEYCLOAK_URL_AUTH:https://keycloak-tsplatform.techsophy.com}/auth/realms/
+ realm: ${REALM_NAME}
 
 gateway:
  uri: ${GATEWAY_URI:https://api-gateway.techsophy.com/api}
@@ -29,6 +30,11 @@ springdoc:
  api-docs:
   path: /payment-gateway/v3/api-docs
 
+url:
+  shortener:
+    expiry:
+      minutes: ${SHORT_URL_EXPIRY_IN_MINUTES:131400}
+      
 USER:
   REGISTRATION:
     FAILURE:
