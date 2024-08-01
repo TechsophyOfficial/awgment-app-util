@@ -24,7 +24,12 @@ public class UrlShortenerController implements UrlShortener {
     @Override
     public String generateShortUrl(String longUrl) {
         String shortPath = urlShortenerService.shortenUrl(longUrl);
-        return gatewayUri + "shrt/" + shortPath;
+        if(gatewayUri.endsWith("/")){
+            return gatewayUri + "shrt/" + shortPath;
+        }
+        else {
+            return gatewayUri + "/shrt/" + shortPath;
+        }
     }
 
     @Override
