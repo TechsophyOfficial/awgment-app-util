@@ -49,5 +49,14 @@ public class UrlShortenerController implements UrlShortener {
                     .body("Short URL has expired");
         }
     }
+
+    @Override
+    public ResponseEntity<?> redirectMedutdUrl(String shortPath) {
+        if(shortPath == null || shortPath.isEmpty() || shortPath.isBlank()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }else{
+            return redirectUrl(shortPath);
+        }
+    }
 }
 

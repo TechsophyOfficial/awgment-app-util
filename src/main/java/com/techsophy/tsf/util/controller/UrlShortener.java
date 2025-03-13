@@ -16,4 +16,7 @@ public interface UrlShortener {
 
     @GetMapping("/{shortPath}")
     ResponseEntity<?> redirectUrl(@PathVariable String shortPath);
+
+    @GetMapping
+    ResponseEntity<?> redirectMedutdUrl(@RequestParam("id") String shortPath);
 }
